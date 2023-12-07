@@ -1,11 +1,11 @@
-const FirstComponent = (props) => {
+const FirstComponent = ({ name, courseName, subjects }) => {
   return (
     <div>
       <p>Example</p>
-      <h1>{props.name}</h1>
-      <h2>{props.courseName}</h2>
+      <h1>{name}</h1>
+      <h2>{courseName}</h2>
       <ul>
-        {props.subjects.map((s) => (
+        {subjects.map((s) => (
           <li key={s}>{s}</li>
         ))}
       </ul>
