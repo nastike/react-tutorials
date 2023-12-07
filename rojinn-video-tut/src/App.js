@@ -1,7 +1,8 @@
 import './App.css';
+import FirstComponent from './components/FirstComponent';
 
 function App() {
-  return;
+  return <FirstComponent name='Rojinn' courseName='MERN' />;
 }
 
 export default App;
