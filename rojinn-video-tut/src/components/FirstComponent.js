@@ -9,6 +9,7 @@ const FirstComponent = (props) => {
           <li key={s}>{s}</li>
         ))}
       </ul>
+      <p>git status check and learn new command</p>
     </div>
   );
 };
