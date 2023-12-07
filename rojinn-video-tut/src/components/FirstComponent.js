@@ -1,15 +1,13 @@
-const FirstComponent = (abc) => {
+const FirstComponent = (props) => {
   return (
     <div>
       <p>Example</p>
-      <h1>{abc.name}</h1>
-      <h2>{abc.courseName}</h2>
+      <h1>{props.name}</h1>
+      <h2>{props.courseName}</h2>
       <ul>
-        <li>{abc.subjects[0]}</li>
-        <li>{abc.subjects[1]}</li>
-        <li>{abc.subjects[2]}</li>
-        <li>{abc.subjects[3]}</li>
-        <li>{abc.subjects[4]}</li>
+        {props.subjects.map((s) => (
+          <li key={s}>{s}</li>
+        ))}
       </ul>
     </div>
   );
