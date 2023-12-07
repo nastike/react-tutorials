@@ -7,6 +7,7 @@ function App() {
       <FirstComponent
         name='Rojinn'
         courseName='MERN'
+        institute='IOE'
         age={23}
         isStudent={true}
         details={{
