@@ -12,7 +12,7 @@ const FirstComponent = ({
   const [state, setState] = useState(isStudent);
   const [count, setCount] = useState(age);
   const [message, setMessage] = useState('');
-  const [subject, setSubject] = useState(subjects);
+  const [courses, setCourses] = useState(subjects);
   return (
     <div id='mycomponent' style={{ color: state ? 'red' : 'green' }}>
       <p>Example</p>
@@ -33,7 +33,7 @@ const FirstComponent = ({
       />
       <button
         onClick={() => {
-          setSubject([...subject, message]);
+          setCourses([...courses, message]);
           setMessage('');
         }}
       >
@@ -45,10 +45,15 @@ const FirstComponent = ({
       <button onClick={() => setState(!state)}>ChangeStudentStatus</button>
       <button onClick={(e) => setCount(count + 1)}>+</button>
       <ul>
-        {subject.map((s, index) => (
+        {courses.map((s, index) => (
           <li key={s}>
             {s}
-            <MdDeleteForever />
+            <MdDeleteForever
+              color='black'
+              onClick={(e) => {
+                setCourses(courses.filter((sub, i) => i !== index));
+              }}
+            />
           </li>
         ))}
       </ul>
