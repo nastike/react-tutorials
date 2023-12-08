@@ -48,9 +48,7 @@ const FirstComponent = ({
         {subject.map((s, index) => (
           <li key={s}>
             {s}
-            <button type='button'>
-              <MdDeleteForever>Delete</MdDeleteForever>
-            </button>
+            <MdDeleteForever />
           </li>
         ))}
       </ul>
