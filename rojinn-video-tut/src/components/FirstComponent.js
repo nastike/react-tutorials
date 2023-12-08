@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { MdDeleteForever } from 'react-icons/md';
+
 const FirstComponent = ({
   name,
   courseName,
@@ -43,8 +45,13 @@ const FirstComponent = ({
       <button onClick={() => setState(!state)}>ChangeStudentStatus</button>
       <button onClick={(e) => setCount(count + 1)}>+</button>
       <ul>
-        {subject.map((s) => (
-          <li key={s}>{s}</li>
+        {subject.map((s, index) => (
+          <li key={s}>
+            {s}
+            <button type='button'>
+              <MdDeleteForever>Delete</MdDeleteForever>
+            </button>
+          </li>
         ))}
       </ul>
       <p>git status check and learn new command</p>
