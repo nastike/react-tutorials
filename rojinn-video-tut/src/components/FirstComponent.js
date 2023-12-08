@@ -9,6 +9,8 @@ const FirstComponent = ({
 }) => {
   const [state, setState] = useState(isStudent);
   const [count, setCount] = useState(age);
+  const [message, setMessage] = useState('');
+  const [subject, setSubject] = useState(subjects);
   return (
     <div id='mycomponent' style={{ color: state ? 'red' : 'green' }}>
       <p>Example</p>
@@ -19,11 +21,29 @@ const FirstComponent = ({
         {count} years old. I am{state ? '' : ' not'} a student of following
         subjects:
       </p>
-      <button onClick={(e) => setCount(count - 1)}>-</button>
+      <input
+        type='text'
+        placeholder='Enter the Subject here'
+        value={message}
+        onChange={(e) => {
+          setMessage(e.target.value);
+        }}
+      />
+      <button
+        onClick={() => {
+          setSubject([...subject, message]);
+          setMessage('');
+        }}
+      >
+        Add Subject
+      </button>
+      <button onClick={(e) => setCount(count > 2 ? count - 1 : count)}>
+        -
+      </button>
       <button onClick={() => setState(!state)}>ChangeStudentStatus</button>
       <button onClick={(e) => setCount(count + 1)}>+</button>
       <ul>
-        {subjects.map((s) => (
+        {subject.map((s) => (
           <li key={s}>{s}</li>
         ))}
       </ul>
