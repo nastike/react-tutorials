@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
+import { RiEdit2Fill } from 'react-icons/ri';
 
 const FirstComponent = ({
   name,
@@ -13,6 +14,8 @@ const FirstComponent = ({
   const [count, setCount] = useState(age);
   const [message, setMessage] = useState('');
   const [courses, setCourses] = useState(subjects);
+  const [editMode, setEditMode] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   return (
     <div id='mycomponent' style={{ color: state ? 'red' : 'green' }}>
       <p>Example</p>
@@ -33,12 +36,28 @@ const FirstComponent = ({
       />
       <button
         onClick={() => {
+          if (editMode) {
+            setCourses(
+              courses.map((y, i) => {
+                selectedIndex === i ? subjects : y;
+              })
+            );
+          }
           setCourses([...courses, message]);
           setMessage('');
         }}
       >
-        Add Subject
+        {editMode ? 'Update' : 'Add'} Subject
       </button>
+      {editMode && (
+        <button
+          onClick={() => {
+            setEditMode(false);
+          }}
+        >
+          Cancel
+        </button>
+      )}
       <button onClick={(e) => setCount(count > 2 ? count - 1 : count)}>
         -
       </button>
@@ -48,6 +67,14 @@ const FirstComponent = ({
         {courses.map((s, index) => (
           <li key={s}>
             {s}
+            <RiEdit2Fill
+              color='green'
+              onClick={(e) => {
+                setEditMode(true);
+                setSelectedIndex(index);
+                setMessage(s);
+              }}
+            />
             <MdDeleteForever
               color='black'
               onClick={(e) => {
